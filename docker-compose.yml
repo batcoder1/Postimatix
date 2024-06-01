@@ -1,0 +1,25 @@
+
+services:
+  nginx_pro:
+    container_name: nginx_pro
+    build:
+      context: ./docker/nginx
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    # Nginx is linked to repo containers
+    depends_on:
+      - backend
+    platform: linux/amd64
+
+  backend:
+    container_name: backend
+    restart: always
+    build:
+      dockerfile: ./dockerfile
+
+    environment:
+      - NODE_ENV=production
+      - OWNER=$OWNER
+      - OWNER_PK=$OWNER_PK

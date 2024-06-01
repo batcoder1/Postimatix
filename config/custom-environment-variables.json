@@ -1,0 +1,6 @@
+{
+  "environment": "NODE_ENV",
+  "http": {
+    "port": "SERVER_PORT"
+  }
+}
