@@ -22,14 +22,5 @@ export namespace WebhookErrors {
     }
   }
 
-  export class errorDoingWebhook extends Result<UseCaseError> {
-    constructor() {
-      super(false, UseCaseError.ERROR_GETTING_XLM_PRICE)
-    }
-  }
-  export class invalidDestinationPublicKey extends Result<UseCaseError> {
-    constructor() {
-      super(false, UseCaseError.INVALID_DESTINATION);
-    }
-  }
+
 }

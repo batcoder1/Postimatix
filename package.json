@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "token": "ts-node src/firebase/firebase-token-generator.ts"
+    "copy-config": "cp -R ./config/* ./dist/config",
+    "build": "tsc -p tsconfig.build.json && npm run copy-config"
   },
   "author": "Enrique Rubio Sanchez",
   "license": "ISC",

@@ -27,4 +27,11 @@ export abstract class UseCaseError implements IUseCaseErrorError {
       es: es[0],
     }
   })
+  public static TOKEN_NOT_FOUND: UseCaseError = Object.freeze({
+    code: "API001",
+    message: {
+      en: en[0],
+      es: es[0],
+    }
+  })
 }
