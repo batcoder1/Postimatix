@@ -30,10 +30,22 @@ export class OpenAiService implements IOpenAiService {
     - The content from Postimatix.com to include in your posts:
     Postimatix offers automated solutions for social media management. Its core product, Posti, is a bot that automates the creation and response to social media posts, allowing users to configure the bot in a few clicks. Posti can create daily posts with AI-generated images, respond to direct messages and follower comments in a user-friendly and efficient manner. The company focuses on simplifying social media management for its customers by providing 24/7 ongoing support.
 
+    - Generate a series of blog posts about cryptocurrencies, focusing on Bitcoin and Ethereum. Each post should be informative, engaging, and suitable for both beginners and enthusiasts. Cover a variety of topics including:
+
+    1. Introduction to Bitcoin: Explain what Bitcoin is, its history, and how it works.
+    2. Introduction to Ethereum: Explain what Ethereum is, its history, and how it works.
+    3. The technology behind cryptocurrencies: Describe blockchain technology and its significance.
+    4. How to buy and store Bitcoin and Ethereum: Provide a guide on purchasing and securely storing these cryptocurrencies.
+    5. The future of Bitcoin and Ethereum: Discuss potential developments and their impacts on the market.
+    6. Security and risks: Outline the security measures users should take and the risks involved in trading cryptocurrencies.
+    7. Recent trends and news: Highlight the latest trends and news in the world of Bitcoin and Ethereum.
+
+    Each post should be around 500 words, with a clear structure, including an introduction, body, and conclusion. Use simple language and provide real-world examples to illustrate key points.
+
     - Add hashtags at the end.
     - Do not start with: Welcome to web3software!
     - Do not start with: "Ready"
-    - Ensure minimum 600 characters per post
+    - Ensure minimum 500 characters per post
     - Ensure every sentence end with \n\n
 
 
@@ -53,7 +65,6 @@ export class OpenAiService implements IOpenAiService {
 
       const content: any = response.choices[0].message?.content;
 
-      logger.info(content);
       return content;
     } catch (error) {
       logger.error(error);
