@@ -74,7 +74,7 @@ const twitterApi =  new TwitterApi({
 container.bind<TwitterApi>(TYPES.TwitterApi).toConstantValue(twitterApi);
 
 const openAi = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY2,
+  apiKey: process.env.OPENAI_API_KEY,
   organization: 'org-zILcrNFbTAvNXrxryPMQnBdI',
   project: 'proj_4FJgEgNhwUSLNqad6hVJdSBi',
 });

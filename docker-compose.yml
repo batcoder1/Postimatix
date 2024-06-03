@@ -8,6 +8,7 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     # Nginx is linked to repo containers
     depends_on:
       - backend
@@ -18,8 +19,14 @@ services:
     restart: always
     build:
       dockerfile: ./dockerfile
+    platform: linux/amd64
 
     environment:
       - NODE_ENV=production
       - OWNER=$OWNER
       - OWNER_PK=$OWNER_PK
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+      - X_APP_KEY=$X_APP_KEY
+      - X_APP_SECRET=$X_APP_SECRET
+      - X_ACCESS_TOKEN=$X_ACCESS_TOKEN
+      - X_ACCESS_SECRET=$X_ACCESS_SECRET

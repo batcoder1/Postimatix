@@ -17,9 +17,11 @@ export class Api {
   private api: AxiosInstance;
   constructor() {
     this.api = axios.create();
-    this.api.interceptors.request.use((param: AxiosRequestConfig) => ({
-      ...param
-    }));
+    this.api.interceptors.request.use((param: any) => {
+      return ({
+        ...param
+      });
+    });
     this.api.interceptors.response.use((param: AxiosResponse) => ({
       ...param
     }));
