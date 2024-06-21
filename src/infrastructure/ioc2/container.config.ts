@@ -49,7 +49,6 @@ container.bind<UseCase<any, Response>>(TYPES.PingUseCase).to(PingUseCase).inRequ
 container.bind<UseCase<any, Response>>(TYPES.WebhookUseCase).to(WebhookUseCase).inRequestScope();
 
 container.bind(TYPES.SendPrizeUseCase).to(SendPrizeUseCase).inSingletonScope();
-container.bind(TYPES.CreateLotteryUseCase).to(CreateLotteryUseCase).inSingletonScope();
 container.bind(TYPES.AutoPostUseCase).to(AutoPostUseCase).inSingletonScope();
 
 container.bind<Api>(TYPES.Api).to(Api).inSingletonScope();
@@ -57,7 +56,7 @@ container.bind<Api>(TYPES.Api).to(Api).inSingletonScope();
 
 // Services
 
-container.bind<ILotteryService>(TYPES.LotteryService).to(LotteryService).inSingletonScope();
+container.bind<ILotteriesService>(TYPES.LotteriesService).to(LotteriesService).inSingletonScope();
 container.bind<IXService>(TYPES.XService).to(XService).inSingletonScope();
 container.bind<ICoinGeckoService>(TYPES.CoinGeckoService).to(CoinGeckoService).inSingletonScope();
 container.bind<OpenAiService>(TYPES.OpenAiService).to(OpenAiService).inSingletonScope();

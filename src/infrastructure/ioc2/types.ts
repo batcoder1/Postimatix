@@ -19,7 +19,7 @@ export const TYPES = {
   // Services
   OpenAiService: Symbol.for('OpenAiService'),
   XService: Symbol.for('XService'),
-  LotteryService: Symbol.for('LotteryService'),
+  LotteriesService: Symbol.for('LotteriesService'),
   CronService: Symbol.for('CronService'),
   CoinGeckoService: Symbol.for('CoinGeckoService'),
 
