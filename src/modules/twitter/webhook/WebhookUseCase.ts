@@ -2,20 +2,20 @@ import {
   inject,
   injectable,
 } from 'inversify';
-import { WebhookDTO } from './WebhookDTO';
-import { WebhookErrors } from './WebhookErrors';
-import { WebhookResponse } from './WebhookResponse';
-import { WebhookMap } from '../mappers/WebhookMap';
-import { Webhook } from '../domain/Webhook';
-import { TYPES } from '../../../infrastructure/ioc2/types';
+import { UseCase } from '../../../core/domain';
+import { Response } from '../../../core/domain/UseCase';
 import {
   Result,
   right,
   wrong
 } from '../../../core/logic';
-import { Response } from '../../../core/domain/UseCase';
-import { UseCase } from '../../../core/domain';
+import { TYPES } from '../../../infrastructure/ioc2/types';
+import { Webhook } from '../domain/Webhook';
+import { WebhookMap } from '../mappers/WebhookMap';
 import { IXService } from '../services/xService';
+import { WebhookDTO } from './WebhookDTO';
+import { WebhookErrors } from './WebhookErrors';
+import { WebhookResponse } from './WebhookResponse';
 
 @injectable()
 export class WebhookUseCase implements UseCase<WebhookDTO, Response> {

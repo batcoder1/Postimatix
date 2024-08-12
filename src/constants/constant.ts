@@ -23,3 +23,4 @@ export const HTTP_CODE_UNAUTHORIZED = 401;
 export const HTTP_CODE_METHOD_IS_NOT_ALLOWED = 405;
 export const HTTP_CODE_METHOD_IS_NOT_IMPLEMENTED = 501;
 export const HTTP_CODE_ERROR_SERVER = 500;
+export const LINKEDIN_URL =  "https://api.linkedin.com/rest"

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TwitterApi } from 'twitter-api-v2';
+import { TweetV2, TwitterApi } from 'twitter-api-v2';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../../../infrastructure/ioc2/types';
 import { logger } from '../../../utils/Logger';
@@ -10,6 +10,7 @@ export interface IXService {
   getTweetsByAccount(userId: string): Promise<any>;
   uploadMediaFromUrl(imageUrl: string): Promise<string | null>;
   replyToTweet(originalTweetId: string, screenName: string): Promise<boolean>;
+  getReplies(): Promise<any[]>
 }
 
 @injectable()
@@ -127,6 +128,44 @@ export class XService implements IXService {
       return false;
     }
   }
+  public async getReplies(): Promise<any[]> {
+    try {
+      logger.info('getReplies');
+      const userId = process.env.TWITTER_USER_ID;
+
+      const now = new Date();
+      const oneMinuteAgo = (new Date(now.getTime() - 60000));
+/*
+      const replies = await this.client.v2.search(`to:${process.env.TWITTER_USERNAME}`, {
+        'tweet.fields': ['in_reply_to_user_id', 'author_id', 'created_at', 'id'],
+      }); */
+
+      const user = await this.client.v2.me();
+      const tweets = await this.client.v2.userTimeline(user.data.id!, {
+        start_time: oneMinuteAgo.toISOString(),
+        'tweet.fields': ['in_reply_to_user_id', 'author_id', 'created_at'],
+      });
+
+
+            if (tweets.data.data.length == 0) {
+              return [];
+            }
+      const replies = tweets.data.data.filter(tweet => tweet.in_reply_to_user_id === process.env.TWITTER_USER_ID);
+
+     /*  const relevantReplies = replies.data.data.filter(
+          (tweet: any) =>
+            tweet.in_reply_to_user_id === userId &&
+            (new Date(tweet.created_at)).getMilliseconds() >= oneMinuteAgo
+      ); */
+
+
+       return replies;
+
+    } catch (error) {
+      console.error('Error fetching replies:', error);
+      return []
+    }
+  };
 
   private async downloadImage(imageUrl: string): Promise<any> {
     try {

@@ -7,6 +7,7 @@ import { TYPES } from '../../../infrastructure/ioc2/types';
 import { logger } from '../../../utils/Logger';
 import { WebhookErrors } from './WebhookErrors';
 import { WebhookUseCase } from './WebhookUseCase';
+import { getClientIp } from '@supercharge/request-ip';
 
 
 @injectable()
@@ -19,8 +20,22 @@ export class WebhookController extends HttpController {
 
   public async executeImpl(): Promise<any> {
     try {
-      const event =  this.req.body.tweet_create_events;
-
+      const event =  this.req.body.tweet_create_events[0];
+      const ip =  getClientIp(this.req) as string;
+      logger.info(
+        `${'Request '}`,
+        this.req.method,
+        ` ${this.req.path}`,
+        ` params:`,
+        this.req.params,
+        `query:`,
+        this.req.query,
+        `body:`,
+        this.req.body,
+        {
+          ip
+        }
+      );
       const result = await this.useCase.execute(event);
 
       if (result.isRight()) {

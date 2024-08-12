@@ -15,6 +15,7 @@ export const TYPES = {
   SendPrizeUseCase: Symbol.for('SendPrizeUseCase'),
   CreateLotteryUseCase: Symbol.for('CreateLotteryUseCase'),
   AutoPostUseCase: Symbol.for('AutoPostUseCase'),
+  RepliesUseCase: Symbol.for('RepliesUseCase'),
 
   // Services
   OpenAiService: Symbol.for('OpenAiService'),
@@ -22,11 +23,15 @@ export const TYPES = {
   LotteriesService: Symbol.for('LotteriesService'),
   CronService: Symbol.for('CronService'),
   CoinGeckoService: Symbol.for('CoinGeckoService'),
+  LinkedinService: Symbol.for('LinkedinService'),
+  InstagramService: Symbol.for('InstagramService'),
 
   //Libraries
   Api: Symbol.for('Api'),
   TwitterApi: Symbol.for('TwitterApi'),
   Web3: Symbol.for('Web3'),
   OpenAi: Symbol.for('OpenAi'),
+  Linkedin: Symbol.for('Linkedin'),
+  Facebook: Symbol.for('Facebook'),
 
 };
